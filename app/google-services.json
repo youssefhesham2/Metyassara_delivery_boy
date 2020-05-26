@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "338350271756",
+    "firebase_url": "https://metyassara-95bb0.firebaseio.com",
+    "project_id": "metyassara-95bb0",
+    "storage_bucket": "metyassara-95bb0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:338350271756:android:74f3856a47c5ed24c6ad29",
+        "android_client_info": {
+          "package_name": "com.client.metyassara"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "338350271756-qfdukmfed2c2rorludsmnqbvtem8ee5g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.client.metyassara",
+            "certificate_hash": "87ea3e51bb20a5c5a08c4e25f9ce470608fac41d"
+          }
+        },
+        {
+          "client_id": "338350271756-en4gubinemurb2e8sk7gu8jq20c01l0j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEfGblNWGWrKipbmTLzPaCAks_cBZXKmk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "338350271756-en4gubinemurb2e8sk7gu8jq20c01l0j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:338350271756:android:e416e39eb13dde32c6ad29",
+        "android_client_info": {
+          "package_name": "com.delevery.metyassaradeliveryboy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "338350271756-mrf3kdbbkhesq70mkh9j4t4h70t9vu90.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.delevery.metyassaradeliveryboy",
+            "certificate_hash": "87ea3e51bb20a5c5a08c4e25f9ce470608fac41d"
+          }
+        },
+        {
+          "client_id": "338350271756-en4gubinemurb2e8sk7gu8jq20c01l0j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEfGblNWGWrKipbmTLzPaCAks_cBZXKmk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "338350271756-en4gubinemurb2e8sk7gu8jq20c01l0j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
