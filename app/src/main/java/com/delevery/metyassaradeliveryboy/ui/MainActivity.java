@@ -33,14 +33,17 @@ public class MainActivity extends AppCompatActivity {
                          switch (menuItem.getItemId()) {
                              case R.id.home:
                                  ReplaceFragment(new HomFragment());
+                                 menuItem.setChecked(true);
                                  break;
 
                              case R.id.my_order:
                                  ReplaceFragment(new MyOrdersFragment());
+                                 menuItem.setChecked(true);
                                  break;
 
                              case R.id.profile:
                                  ReplaceFragment(new MyProfilFragment());
+                                 menuItem.setChecked(true);
                                  break;
                          }
                          return false;

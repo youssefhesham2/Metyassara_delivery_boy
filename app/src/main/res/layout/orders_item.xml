@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@drawable/solid_whit_background"
+    android:elevation="4dp"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/from"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/green_circle_imag" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="5dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/from"
+            android:layout_marginLeft="12dp"
+            android:background="#666666" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/to"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/line"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/gray_circle_img" />
+
+        <TextView
+            android:id="@+id/ResturentName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/from"
+            android:text="Macdonals"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/ClientAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/to"
+            android:lines="1"
+            android:text="2-ahmed oraby,ain shams,ciro,egypt"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/AcceptOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ClientAddress"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/green_solid_background"
+            android:text="accepted" />
+    </RelativeLayout>
+</LinearLayout>
