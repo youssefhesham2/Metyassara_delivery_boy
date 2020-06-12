@@ -1,10 +1,11 @@
 package com.delevery.metyassaradeliveryboy.model;
 
 public class DeliveryBoyModel {
-    private String Delivery_id,Name,Phone,Mail,Imag_url,Status,HaveOrderOrNo,Rate;
+    private String Delivery_id,Name,Phone,Mail,Imag_url,Status,HaveOrderOrNo;
     private double AllMany,MyEarn;
+    private float Rate;
 
-    public DeliveryBoyModel(String delivery_id, String name, String phone, String mail, String imag_url, String status, String haveOrderOrNo, String rate, double allMany, double myEarn) {
+    public DeliveryBoyModel(String delivery_id, String name, String phone, String mail, String imag_url, String status, String haveOrderOrNo, float rate, double allMany, double myEarn) {
         Delivery_id = delivery_id;
         Name = name;
         Phone = phone;
@@ -76,11 +77,11 @@ public class DeliveryBoyModel {
         HaveOrderOrNo = haveOrderOrNo;
     }
 
-    public String getRate() {
+    public float getRate() {
         return Rate;
     }
 
-    public void setRate(String rate) {
+    public void setRate(float rate) {
         Rate = rate;
     }
 
