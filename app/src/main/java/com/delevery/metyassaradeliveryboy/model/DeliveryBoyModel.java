@@ -1,23 +1,58 @@
 package com.delevery.metyassaradeliveryboy.model;
 
 public class DeliveryBoyModel {
-    private String Delivery_id,Name,Phone,Mail,Imag_url,Status,HaveOrderOrNo,Rate;
-    private double AllMany,MyEarn;
+    private String Delivery_id,Name,Phone,Imag_url,Status,HaveOrderOrNo,token;
+    private double AllMany,MyEarn,Rate,totalrate;
+    private int totalnumberofrate;
 
-    public DeliveryBoyModel(String delivery_id, String name, String phone, String mail, String imag_url, String status, String haveOrderOrNo, String rate, double allMany, double myEarn) {
+    public DeliveryBoyModel(String delivery_id, String name, String phone, String imag_url, String status, String haveOrderOrNo, String token, double allMany, double myEarn, double rate, double totalrate, int totalnumberofrate) {
         Delivery_id = delivery_id;
         Name = name;
         Phone = phone;
-        Mail = mail;
         Imag_url = imag_url;
         Status = status;
         HaveOrderOrNo = haveOrderOrNo;
-        Rate = rate;
+        this.token = token;
         AllMany = allMany;
         MyEarn = myEarn;
+        Rate = rate;
+        this.totalrate = totalrate;
+        this.totalnumberofrate = totalnumberofrate;
+    }
+
+    public double getTotalrate() {
+        return totalrate;
+    }
+
+    public void setTotalrate(double totalrate) {
+        this.totalrate = totalrate;
+    }
+
+    public int getTotalnumberofrate() {
+        return totalnumberofrate;
+    }
+
+    public void setTotalnumberofrate(int totalnumberofrate) {
+        this.totalnumberofrate = totalnumberofrate;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public DeliveryBoyModel() {
+    }
+
+    public double getRate() {
+        return Rate;
+    }
+
+    public void setRate(double rate) {
+        Rate = rate;
     }
 
     public String getDelivery_id() {
@@ -43,15 +78,6 @@ public class DeliveryBoyModel {
     public void setPhone(String phone) {
         Phone = phone;
     }
-
-    public String getMail() {
-        return Mail;
-    }
-
-    public void setMail(String mail) {
-        Mail = mail;
-    }
-
     public String getImag_url() {
         return Imag_url;
     }
@@ -74,14 +100,6 @@ public class DeliveryBoyModel {
 
     public void setHaveOrderOrNo(String haveOrderOrNo) {
         HaveOrderOrNo = haveOrderOrNo;
-    }
-
-    public String getRate() {
-        return Rate;
-    }
-
-    public void setRate(String rate) {
-        Rate = rate;
     }
 
     public double getAllMany() {

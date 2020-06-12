@@ -1,10 +1,12 @@
 package com.delevery.metyassaradeliveryboy.model;
 
-public class RequestsModel {
-    private String restaurant_name, addreasr, phone, describe_order, client_id, delevery_id, date, status;
+import java.io.Serializable;
+
+public class RequestsModel implements Serializable {
+    private String restaurant_name, addreasr, phone, describe_order, client_id, delevery_id, date, status,building,floor;
     private double cash;
 
-    public RequestsModel(String restaurant_name, String addreasr, String phone, String describe_order, String client_id, String delevery_id, String date, String status, double cash) {
+    public RequestsModel(String restaurant_name, String addreasr, String phone, String describe_order, String client_id, String delevery_id, String date, String status, String building, String floor, double cash) {
         this.restaurant_name = restaurant_name;
         this.addreasr = addreasr;
         this.phone = phone;
@@ -13,7 +15,25 @@ public class RequestsModel {
         this.delevery_id = delevery_id;
         this.date = date;
         this.status = status;
+        this.building = building;
+        this.floor = floor;
         this.cash = cash;
+    }
+
+    public String getBuilding() {
+        return building;
+    }
+
+    public void setBuilding(String building) {
+        this.building = building;
+    }
+
+    public String getFloor() {
+        return floor;
+    }
+
+    public void setFloor(String floor) {
+        this.floor = floor;
     }
 
     public RequestsModel() {
