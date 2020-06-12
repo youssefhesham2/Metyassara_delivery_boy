@@ -117,7 +117,8 @@ public class MyProfilFragment extends Fragment
     }
 
     //to get your data from database
-    private void getMyModel(final String uid) {
+    private void getMyModel(final String uid)
+    {
         enterDialog.show();
         databaseReference.child("delivery boy").child(uid).addValueEventListener(new ValueEventListener () {
             @Override
