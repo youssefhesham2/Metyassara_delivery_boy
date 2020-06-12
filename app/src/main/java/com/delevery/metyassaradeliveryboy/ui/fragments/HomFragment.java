@@ -1,6 +1,8 @@
 package com.delevery.metyassaradeliveryboy.ui.fragments;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -9,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +21,8 @@ import android.widget.TextView;
 
 import com.delevery.metyassaradeliveryboy.R;
 import com.delevery.metyassaradeliveryboy.model.RequestsModel;
+import com.delevery.metyassaradeliveryboy.ui.OrderProcessActivity.OrderProcessActivity;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,6 +33,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomFragment extends Fragment {
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
     RequestsModel requestsModel;
     List<RequestsModel> requestsModels=new ArrayList<>();
     View view;
@@ -48,8 +55,20 @@ public class HomFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        InitSharedPrefrance();
         InitRecycler();
         GetData();
+    }
+
+    private void InitSharedPrefrance() {
+        preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        editor = preferences.edit();
+        String inorder=preferences.getString("in order","");
+        if(inorder.equals("in order")){
+            Intent intent=new Intent(getActivity(), OrderProcessActivity.class);
+            startActivity(intent);
+            getActivity().finish();
+        }
     }
 
     private void InitRecycler() {
@@ -92,14 +111,35 @@ public class HomFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull RequestsViewHoleder holder, int position) {
-            RequestsModel requestsModel=requestsModels.get(position);
+            final RequestsModel requestsModel=requestsModels.get(position);
 
             holder.ResturentName.setText(requestsModel.getRestaurant_name());
             holder.ClientAddress.setText(requestsModel.getAddreasr());
             holder.AcceptOrder.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    String delevery_id=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    FirebaseDatabase.getInstance().getReference().child("requests").child(requestsModel.getClient_id()).child("delevery_id").setValue(delevery_id);
+                    FirebaseDatabase.getInstance().getReference().child("requests").child(requestsModel.getClient_id()).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                           RequestsModel requestsModel1= dataSnapshot.getValue(RequestsModel.class);
+                            Intent intent=new Intent(getActivity(), OrderProcessActivity.class);
+                            editor.putString("clirnt id",requestsModel.getClient_id());
+                            editor.commit();
+//                            intent.putExtra("request model",requestsModel1);
+                            //FirebaseDatabase.getInstance().getReference().child("requests").child(requestsModel.getClient_id()).removeValue();
+                            FirebaseDatabase.getInstance().getReference().child("in process").child(requestsModel.getClient_id()).setValue(requestsModel1);
+                            FirebaseDatabase.getInstance().getReference().child("in process").child(requestsModel.getClient_id()).child("status").setValue("go to store");
+                            startActivity(intent);
+                            getActivity().finish();
+                        }
 
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                 }
             });
         }
