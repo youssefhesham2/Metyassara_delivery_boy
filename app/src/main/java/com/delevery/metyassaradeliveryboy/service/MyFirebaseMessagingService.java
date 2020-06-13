@@ -1,4 +1,5 @@
 package com.delevery.metyassaradeliveryboy.service;
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -30,23 +31,6 @@ import com.google.firebase.messaging.RemoteMessage;
 public class MyFirebaseMessagingService extends FirebaseMessagingService{
     private static final String TAG = "MyFirebaseMsgService";
    public static MediaPlayer mp =null;
-int i=0;
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        long[] pattern = {0, 100, 1000};
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-// Vibrate for 500 milliseconds
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            v.vibrate(VibrationEffect.createOneShot(20000, VibrationEffect.DEFAULT_AMPLITUDE));
-        } else {
-            //deprecated in API 26
-            v.vibrate(20000);
-        }
-
-    }
-
-
 
     /**
      * Called when message is received.
@@ -81,7 +65,7 @@ int i=0;
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
-
+            sendNotification("new order");
             if (/* Check if data needs to be processed by long running job */ true) {
                 // For long-running tasks (10 seconds or more) use WorkManager.
 
@@ -157,24 +141,35 @@ int i=0;
         String channelId = "def";
         long[] vibrate = { 0, 100, 200, 300};
 
-        // Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationBuilder =
+        Uri sound = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + this.getPackageName() + "/" + R.raw.android_new_sound);
+       NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)
                         .setSmallIcon(R.drawable.noti_icon)
                         .setContentTitle("metyassara")
                         .setContentText(messageBody)
-                        .setLargeIcon(BitmapFactory.decodeResource(this.getResources(), R.drawable.noti_icon))
-                        .setAutoCancel(true)
-                        .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000})
+                        .setLargeIcon(BitmapFactory.decodeResource(this.getResources(), R.mipmap.notification_icon))
+                        .setAutoCancel(false)
+                        .setSound(sound)
+                        .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000})
                         .setContentIntent(pendingIntent);
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         // Since android Oreo notification channel is needed.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            Uri sound2 = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + this.getPackageName() + "/" + R.raw.android_new_sound);
+
             NotificationChannel channel = new NotificationChannel(channelId,
                     "Channel human readable title",
                     NotificationManager.IMPORTANCE_DEFAULT);
+
+            AudioAttributes attributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                    .build();
+            channel.enableLights(true);
+            channel.enableVibration(true);
+            channel.setVibrationPattern((new long[] { 1000, 1000, 1000, 1000, 1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000}));
+            channel.setSound(sound2, attributes);
             notificationManager.createNotificationChannel(channel);
 
         }

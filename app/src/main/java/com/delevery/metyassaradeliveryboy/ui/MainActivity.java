@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
     private void UpdateToken() {
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String refreshToken = FirebaseInstanceId.getInstance().getToken();
+        Token token = new Token(refreshToken);
         FirebaseDatabase.getInstance().getReference("delivery boy").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("token").setValue(refreshToken);
     }
 }
