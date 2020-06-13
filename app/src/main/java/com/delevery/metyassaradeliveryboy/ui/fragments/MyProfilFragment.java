@@ -172,7 +172,7 @@ public class MyProfilFragment extends Fragment
         usernameField.setText(myModel.getName ());
 
         TextView emailField = myProfileFragment.findViewById(R.id.email_field);
-        emailField.setText(myModel.getMail ());
+        emailField.setText(myEmail);
 
         openChangePassword = myProfileFragment.findViewById(R.id.open_change_password);
         openChangePhoneNumber = myProfileFragment.findViewById(R.id.open_change_phone_number);
@@ -200,7 +200,7 @@ public class MyProfilFragment extends Fragment
         myEarn.setText ( String.valueOf ( myModel.getMyEarn () ) );
 
         RatingBar myRate = myProfileFragment.findViewById ( R.id.rating );
-        myRate.setRating ( myModel.getRate () );
+        myRate.setRating ( (float) myModel.getRate () );
 
         setChangePassword(0);
         setChangePhoneNumber(0);

@@ -20,7 +20,6 @@
             <com.github.florent37.shapeofview.shapes.ArcView
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:elevation="6dp"
                 app:shape_arc_cropDirection="outside"
                 app:shape_arc_height="20dp"
                 app:shape_arc_position="bottom"
